@@ -29,8 +29,31 @@ server.post('/fishies', (req, resp) => {
 
     return resp.json(fishies)
 
-})
+});
 
+//update fish
+
+server.put('/fishies/:index', (req, resp) => {
+    const { index } = req.params
+    const { name } = req.body
+
+    fishies[index] = name
+
+    return resp.json(fishies);
+
+});
+
+
+//delete
+
+server.delete('/fishies/:index', (req, resp) => {
+    const { index } = req.params
+
+
+    fishies.splice(index, 1)
+
+    return resp.json({ message: 'the fish was deleted' })
+})
 
 
 
